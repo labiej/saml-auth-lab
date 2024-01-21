@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="idp-metadata.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="idp-metadata.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ITfoxtec.Identity.Saml2.MvcCore" Version="4.8.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.10" />
   </ItemGroup>

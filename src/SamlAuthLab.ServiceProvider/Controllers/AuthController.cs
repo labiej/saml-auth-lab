@@ -2,19 +2,41 @@
 {
     using ITfoxtec.Identity.Saml2;
     using ITfoxtec.Identity.Saml2.MvcCore;
+    using ITfoxtec.Identity.Saml2.Schemas;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Options;
+
+    using SamlAuthLab.ServiceProvider.Data;
 
     [AllowAnonymous]
     public class AuthController : Controller
     {
+        private readonly Saml2Configuration configuration;
+        private readonly UserStoreOptions _userStore;
+        public AuthController(IOptions<Saml2Configuration> config, IOptions<UserStoreOptions> users)
+        {
+            configuration = config.Value;
+            _userStore = users.Value;
+        }
+
+        [HttpGet]
         public IActionResult Login()
         {
             var binding = new Saml2RedirectBinding();
 
-            var request = new Saml2AuthnRequest(null);
+            var request = new Saml2AuthnRequest(configuration)
+            {
+                Subject = new Subject { NameID = new NameID { ID = "abcd" } },
+                NameIdPolicy = new NameIdPolicy { AllowCreate = true, Format = "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" },
+                AssertionConsumerServiceUrl = new Uri("https://localhost:7145/Auth/ConsumeAssertion")
+            };
 
-            return binding.Bind(request).ToActionResult();
+            HttpContext.Session.SetString("RequestId", request.IdAsString);
+
+            var bound = binding.Bind(request);
+            return bound.ToActionResult();
         }
 
         /// <summary>
@@ -65,7 +87,7 @@
             var genericRequest = await Request.ToGenericHttpRequestAsync();
 
             var binding = new Saml2PostBinding();
-            var response = new Saml2AuthnResponse(null);
+            var response = new Saml2AuthnResponse(configuration);
 
             binding.ReadSamlResponse(genericRequest, response);
 
@@ -74,7 +96,7 @@
             {
                 // Authentication failed
             }
-
+             
             binding.Unbind(genericRequest, response);
 
             await AuthenticateUser(response);

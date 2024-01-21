@@ -1,35 +1,37 @@
 using ITfoxtec.Identity.Saml2;
 using ITfoxtec.Identity.Saml2.MvcCore.Configuration;
-using SamlAuthLab.IdentityProvider.Models;
+using ITfoxtec.Identity.Saml2.Schemas.Metadata;
+using ITfoxtec.Identity.Saml2.Util;
+
+using SamlAuthLab.IdentityProvider.Cache;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.Configure<Settings>(builder.Configuration.GetSection("Settings"));
-builder.Services.AddOptions<Saml2Configuration>()
-    .Bind(builder.Configuration.GetSection("Saml2"))
-    .Validate(cfg => {
 
-        return true;
-    }, "Certificate must be valid");
-//builder.Services.BindConfig<Saml2Configuration>(Configuration, "Saml2", (serviceProvider, saml2Configuration) =>
-//{
-//    //saml2Configuration.SignAuthnRequest = true;
-//    saml2Configuration.SigningCertificate = CertificateUtil.Load(AppEnvironment.MapToPhysicalFilePath(Configuration["Saml2:SigningCertificateFile"]), Configuration["Saml2:SigningCertificatePassword"], X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
-//    if (!saml2Configuration.SigningCertificate.IsValidLocalTime())
-//    {
-//        throw new Exception("The IdP signing certificates has expired.");
-//    }
-//    saml2Configuration.AllowedAudienceUris.Add(saml2Configuration.Issuer);
+builder.Services.AddControllersWithViews();
 
-//    return saml2Configuration;
-//});
+builder.Services.Configure<Saml2Configuration>(builder.Configuration.GetSection("Saml2"))
+    .Configure<Saml2Configuration>(samlConfig =>
+    {
+        var serviceProviderMetadataFile = builder.Configuration["Saml2:SPMetadata"];
 
+        var entityDescriptor = new EntityDescriptor();
+        entityDescriptor.ReadSPSsoDescriptorFromFile(serviceProviderMetadataFile);
+
+        if (entityDescriptor.SPSsoDescriptor is null)
+            throw new Exception("SPSsoDescriptor not loaded from metadata.");
+
+        samlConfig.SigningCertificate = CertificateUtil.Load(builder.Configuration["Saml2:SigningCertificateFile"], builder.Configuration["Saml2:SigningCertificatePassword"]);
+        
+    });
+
+builder.Services.AddSingleton<SamlRequestStore>();
+
+builder.Services.AddMemoryCache();
+builder.Services.AddSession(opt => { });
 builder.Services.AddSaml2();
 
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -42,10 +44,14 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseSaml2();
+
 app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
+app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+app.UseSession();
 
 app.Run();

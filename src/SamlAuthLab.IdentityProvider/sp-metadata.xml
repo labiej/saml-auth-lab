@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<m:EntityDescriptor xmlns:m="urn:oasis:names:tc:SAML:2.0:metadata" entityID="saml-authlab" ID="_c45918ed-5438-4eb6-9ed5-d06f48c45763">
+	<m:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol" WantAssertionsSigned="true">
+		<m:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName</m:NameIDFormat>
+		<m:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://localhost:7145/Auth/ConsumeAssertion" index="0" isDefault="true"/>
+		<m:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://localhost:7145/Auth/ConsumeAssertionWithoutChecks" index="1"/>
+		<m:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://localhost:7145/Auth/ConsumeAssertionAllowUnsolicited" index="2"/>
+	</m:SPSSODescriptor>
+</m:EntityDescriptor>

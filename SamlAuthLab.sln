@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamlAuthLab.IdentityProvide
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamlAuthLab.ServiceProvider", "src\SamlAuthLab.ServiceProvider\SamlAuthLab.ServiceProvider.csproj", "{FF1ACAC9-189C-4C0C-9216-4AE619E4F97E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamlAuthLab.Shared", "SamlAuthLab.Shared\SamlAuthLab.Shared.csproj", "{EC173A33-8172-437F-8CBF-0B570681D425}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FF1ACAC9-189C-4C0C-9216-4AE619E4F97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF1ACAC9-189C-4C0C-9216-4AE619E4F97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF1ACAC9-189C-4C0C-9216-4AE619E4F97E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC173A33-8172-437F-8CBF-0B570681D425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC173A33-8172-437F-8CBF-0B570681D425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC173A33-8172-437F-8CBF-0B570681D425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC173A33-8172-437F-8CBF-0B570681D425}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

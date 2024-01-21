@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+    /* form {
+        display:grid;
+        grid-template-columns: auto max-content;
+        width: 300px
+    }
+
+    form button {
+        grid-column: 2
+    } */
+</style>
+<form method="post" action="DoLogin">
+    <input type="radio" name="user" value="user" id="user" checked>
+    <label for="user">User</label><br />
+    <input type="radio" name="user" value="admin" id="admin">
+    <label for="admin">Administrator</label>
+    <br/>
+    <button class="btn btn-info" type="submit">Authenticate</button>
+</form>
