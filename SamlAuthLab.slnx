@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Dockerfile" />
+  </Folder>
+  <Project Path="SamlAuthLab.Shared\SamlAuthLab.Shared.csproj" />
+  <Project Path="src\SamlAuthLab.IdentityProvider\SamlAuthLab.IdentityProvider.csproj" />
+  <Project Path="src\SamlAuthLab.ServiceProvider\SamlAuthLab.ServiceProvider.csproj" />
+</Solution>
