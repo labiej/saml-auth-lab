@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Lab",
+    "Projects": [
+      {
+        "Path": "src\\SamlAuthLab.IdentityProvider\\SamlAuthLab.IdentityProvider.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\SamlAuthLab.ServiceProvider\\SamlAuthLab.ServiceProvider.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
