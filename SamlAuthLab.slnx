@@ -4,7 +4,12 @@
     <File Path="Directory.Build.props" />
     <File Path="Dockerfile" />
   </Folder>
+  <Properties Name="Visual Studio">
+    <Property Name="OpenWith" Value="17" />
+  </Properties>
   <Project Path="SamlAuthLab.Shared\SamlAuthLab.Shared.csproj" />
   <Project Path="src\SamlAuthLab.IdentityProvider\SamlAuthLab.IdentityProvider.csproj" />
   <Project Path="src\SamlAuthLab.ServiceProvider\SamlAuthLab.ServiceProvider.csproj" />
+  <Project Path="src\SamlAuthLab.AppHost\SamlAuthLab.AppHost.csproj" Type="C#" />
+  <Project Path="src\SamlAuthLab.ServiceDefaults\SamlAuthLab.ServiceDefaults.csproj" />
 </Solution>

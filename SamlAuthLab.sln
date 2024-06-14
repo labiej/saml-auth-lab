@@ -16,6 +16,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Dockerfile = Dockerfile
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamlAuthLab.ServiceDefaults", "src\SamlAuthLab.ServiceDefaults\SamlAuthLab.ServiceDefaults.csproj", "{27928287-41C5-4DF7-9BDA-362A0E329278}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SamlAuthLab.AppHost", "src\SamlAuthLab.AppHost\SamlAuthLab.AppHost.csproj", "{06E6293B-702A-47DC-BDDB-B77EC5E9FF96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +38,14 @@ Global
 		{EC173A33-8172-437F-8CBF-0B570681D425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC173A33-8172-437F-8CBF-0B570681D425}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC173A33-8172-437F-8CBF-0B570681D425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27928287-41C5-4DF7-9BDA-362A0E329278}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27928287-41C5-4DF7-9BDA-362A0E329278}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27928287-41C5-4DF7-9BDA-362A0E329278}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27928287-41C5-4DF7-9BDA-362A0E329278}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06E6293B-702A-47DC-BDDB-B77EC5E9FF96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E6293B-702A-47DC-BDDB-B77EC5E9FF96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E6293B-702A-47DC-BDDB-B77EC5E9FF96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E6293B-702A-47DC-BDDB-B77EC5E9FF96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

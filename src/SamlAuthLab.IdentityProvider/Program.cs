@@ -7,6 +7,8 @@ using SamlAuthLab.IdentityProvider.Cache;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 
 builder.Services.AddControllersWithViews();
 
@@ -32,6 +34,8 @@ builder.Services.AddSession(opt => { });
 builder.Services.AddSaml2();
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

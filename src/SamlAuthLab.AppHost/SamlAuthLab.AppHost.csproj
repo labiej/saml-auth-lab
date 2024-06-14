@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>21ffc625-d726-4b74-9198-401d8537eee0</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SamlAuthLab.IdentityProvider\SamlAuthLab.IdentityProvider.csproj" />
+    <ProjectReference Include="..\SamlAuthLab.ServiceProvider\SamlAuthLab.ServiceProvider.csproj" />
+  </ItemGroup>
+
+</Project>
